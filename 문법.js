@@ -11,19 +11,18 @@
 //a = 10; //에러 const는 값을 바꿀 수 없다.
 
 //함수
-function add(n1, n2) {
-  return n1+n2;
-}
+// function add(n1, n2) {
+//   return n1+n2;
+// }
 
-result = add(1,2);
-console.log(result) // 3
+// result = add(1,2);
+// console.log(result) // 3
 
-plus = add;
-result = plus(3,4);
-console.log(reuslt) //7
+//plus = add;
+//result = plus(3,4);
+//console.log(result) //7
 
-sub = function(n1,n2) {
-  return n1-n2;
-}
+sub = (n1,n2) => n1-n2; //함수가 body가 return 하나일 때
+
 result = sub(3,2);
 console.log(result) //1
