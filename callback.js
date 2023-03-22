@@ -13,3 +13,5 @@ function cb() {
 somefunc(function() {
   console.log("콜백함수 실행")
 })
+//비동기 프로그램이 뭔지
+//callback 뭔지
