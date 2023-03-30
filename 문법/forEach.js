@@ -11,3 +11,4 @@ fruits.forEach(function(f) {
 for(const f of fruits) {
   console.log(f);
 }
+

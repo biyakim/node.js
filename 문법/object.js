@@ -14,3 +14,6 @@ console.log(cathy["name"]);
 // javaScript는 기존에 없던 속성도 추가할 수 있다
 cathy["성별"] = "female";
 console.log(cathy.성별);
+
+cathy["name"] = "귀요미"
+console.log(cathy.name)
