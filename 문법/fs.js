@@ -7,7 +7,7 @@ console.log(__dirname);
 const files = fs.readdirSync(__dirname);
 
 //특정파일의 전체(절대)경로
-result = ___dirname + '\\'+files[1]
+result = __dirname + '\\'+files[1]
 console.log(result)
 
 console.log(fs.statSync(result));
