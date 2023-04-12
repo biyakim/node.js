@@ -7,7 +7,7 @@ function getAllFiles(dirPath, arrOfFiles) {
   const files = fs.readdirSync(dirPath);
 
   files.forEach((file) => {
-    const destPath = dirPath + '\\' + file;
+    const destPath = path.join(dirPath,file);
 
     if(fs.statSync(destPath).isDirectory()) {
       // 디렉토리라면 해당 폴더에 있는 모든 파일목록들을 체크
