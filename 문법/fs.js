@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path')
 
 //__dirname : 현재 디렉토리의 절대경로
 console.log(__dirname);
@@ -7,7 +8,9 @@ console.log(__dirname);
 const files = fs.readdirSync(__dirname);
 
 //특정파일의 전체(절대)경로
-result = __dirname + '\\'+files[1]
+//result = __direname + '\\' + files[1]
+//문자열 합치는 것보다 join을 사용하는 것을 권장(경로방식을 운영체제에 맞춰서 처리해줌)
+result = path.join(__dirname,files[1]);
 console.log(result)
 
 console.log(fs.statSync(result));
