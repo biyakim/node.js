@@ -32,10 +32,31 @@ function getDuplicated(baseDir){
   if(!fs.existsSync(duplicatedDir))
       fs.mkdirSync(duplicatedDir);
 
-  const arrayOfFiles = getAllFiles(baseDir, [])
-  const duplicatedFiles = [];
-}
+  const arrayOfFiles = getAllFiles(baseDir, []);
 
-getDuplicated(path.join(__dirname, 'base'));
+  const duplicatedFiles = [];
+
+  arrayOfFiles.forEach(function(file, idx) {
+    const fileName = path.basename(file);
+
+  const duplicatedIdx = arrayOfFiles.findIndex(function(otherFile, otherIdx) {
+    if(otherIdx > idx && otherFile.includes(fileName))
+      return true;
+    else 
+      return false;
+  })
+
+  if(duplicatedIdx > -1){
+    const duplicatedFile = arrayOfFiles[duplicatedIdx];
+    duplicatedFiles.push(file);
+    duplicatedFiles.push(duplicatedFile);
+  }
+
+});
+return duplicatedFiles
+}
 // const files = getAllFiles(__dirname + '\\base', []);
-// console.log(files)  
+// console.log(files)
+
+const files = getDuplicated(path.join(__dirname, 'base'));
+console.log(files.join('\n'));
