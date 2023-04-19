@@ -50,6 +50,16 @@ function getDuplicated(baseDir){
     const duplicatedFile = arrayOfFiles[duplicatedIdx];
     duplicatedFiles.push(file);
     duplicatedFiles.push(duplicatedFile);
+
+    const destPath = path.join(duplicatedDir, fileName);
+    fs.copyFile(file,destPath, (err) => {
+      if(err){
+        console.error(err);
+        return;
+      }
+      console.log(`${fileName}이(가) 중복되었습니다. ${destPath}에 복사되었습니다.`);
+    });
+    
   }
 
 });
