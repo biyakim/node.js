@@ -17,6 +17,10 @@ console.log(path.basename(result));
 
 const copyedFile = path.join(__dirname, '복사한파일.js')
 fs.copyFileSync(reuslt, copyedFile)
-fs.unlinkSync(copyedFile);
+
+const renameFile = path.join(__dirname, '복사한파일.js')
+fs.renameSync(copyedFile, renameFile);
+
+//fs.unlinkSync(copyedFile);
 
 console.log(fs.statSync(result));
