@@ -7,6 +7,11 @@ const index = {
   name : 'JWP',
   here : '한국'
 }
+const food = {
+  food1 : '서영이쿠키',
+  food2 : '사시미',
+  food3 : '스시'
+}
 
 const server = http.createServer(function(req,res) {
     console.log(req.url);
@@ -19,7 +24,9 @@ const server = http.createServer(function(req,res) {
       .then((data) => res.end(data)) //데이터를 넘겨받은 ejs코드(data)를 클라이언트에게 보낸다
     
     }else if(req.url === '/food'){
-      fs.createReadStream(path.join(__dirname,'html', 'food.html')).pipe(res)
+      ejs.renderFile(path.join(__dirname,'template', 'food.ejs')
+      , {food1 : food.food1, food2 : food.food2, food3 : food.food3})
+      .then((data) => res.end(data))
     }else {
       fs.createReadStream(path.join(__dirname,'html', '404.html')).pipe(res)
     }
