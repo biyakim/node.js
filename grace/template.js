@@ -7,11 +7,12 @@ const index = {
   name : 'JWP',
   here : '한국'
 }
-const food = {
-  food1 : '서영이쿠키',
-  food2 : '사시미',
-  food3 : '스시'
-}
+// const food = {
+//   food1 : '서영이쿠키',
+//   food2 : '사시미',
+//   food3 : '스시'
+// }
+const food = ['사시미', '스시', '육회']
 
 const server = http.createServer(function(req,res) {
     console.log(req.url);
@@ -25,7 +26,7 @@ const server = http.createServer(function(req,res) {
     
     }else if(req.url === '/food'){
       ejs.renderFile(path.join(__dirname,'template', 'food.ejs')
-      , {food1 : food.food1, food2 : food.food2, food3 : food.food3})
+      , {food})
       .then((data) => res.end(data))
     }else {
       fs.createReadStream(path.join(__dirname,'html', '404.html')).pipe(res)
