@@ -58,4 +58,11 @@ app.get('/', function(req,res,next) {
     console.log('진행시켜')
 })
 
+app.get('/test/:name', function(req,res,next) {
+    console.log('path', req.path) // '/test/JWP
+    console.log('params', req.params); //{name : 'JWP}
+    console.log('query', req.query);    // {Lang : 'ko'}
+    res.send('test중 콘솔을 보시오')
+});
+
 app.listen(3333)
