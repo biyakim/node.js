@@ -48,6 +48,9 @@
 const express =require('express');
 const app = express();
 
+
+console.log(__dirname)
+
 app.get('*', function(req,res,next) {
     console.log('당장')
     next();
