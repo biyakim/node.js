@@ -1,4 +1,4 @@
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
 const path = require('path');
 
 require('dotenv').config({
@@ -18,12 +18,43 @@ const pool = mysql.createPool({
 //   }
 // })
 
+const insertData = {
+  name: 'bengi',
+  Lane: 'jg',
+  team: 't1',
+  kills: 5,
+  deaths: 3,
+  assists: 8
+};
+
+pool.query("INSERT INTO player SET ?", insertData)
+  .then(() => {
+    console.log("INSERT success");
+  })
+  .catch(err => {
+    console.log(err);
+  });
+
+const updateData = {
+  name : "sungwoong",
+  kills : 15,
+  deaths : 10
+}
+
+pool.query("UPDATE player SET ? WHERE name = ?", [updateData, "bengi"])
+  .then(() => {
+    console.log("UPDATE 성공")
+  })
+  .catch(err => {
+    console.log(err);
+  })
+
 pool.query("SELECT * FROM player")
   .then(([results]) => {
-    for(const r of results) {
+    for (const r of results) {
       console.log(r);
     }
-})
-.catch(err => {
-  console.log(err);
-})
+  })
+  .catch(err => {
+    console.log(err);
+  });
