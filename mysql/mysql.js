@@ -24,3 +24,6 @@ pool.query("SELECT * FROM player")
       console.log(r);
     }
 })
+.catch(err => {
+  console.log(err);
+})
