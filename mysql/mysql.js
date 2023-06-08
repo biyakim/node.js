@@ -12,8 +12,15 @@ const pool = mysql.createPool({
   database : process.env.DB_DB,
 });
 
-pool.query("SELECT * FROM player",(err,results) => {
-  for(const r of results) {
-    console.log(r);
-  }
+// pool.query("SELECT * FROM player",(err,results) => {
+//   for(const r of results) {
+//     console.log(r);
+//   }
+// })
+
+pool.query("SELECT * FROM player")
+  .then(([results]) => {
+    for(const r of results) {
+      console.log(r);
+    }
 })
