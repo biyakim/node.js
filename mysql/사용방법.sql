@@ -38,7 +38,7 @@ VALUES('bengi', 'jg', 't1', 4,5,17),('JWP','mid','t1',30,0,5);
 SELECT * FROM player;
 
 --데이터 수정
-UPDATE player set name = 'sungwoong' WHERE name = 'bengi' 
+UPDATE player set name = 'sungwoong' WHERE name = 'bengi';
 
 --데이터 삭제
 DELETE FROM player WHERE name = 'sungwoong';
