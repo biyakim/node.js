@@ -1,10 +1,13 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
+app.use(cookieParser());
+
 app.get("/set",(req,res) => {
-  res.setHeader("Set-Cookie","name=KY");
-  res.setHeader("Set-Cookie","age=62");
+  res.cookie("name","KY");
+  res.cookie("age",62);
   res.send("쿠키 set");
 })
 
@@ -12,24 +15,14 @@ app.get("/set",(req,res) => {
 app.get("/get", (req,res) => {
   const cookie = req.headers.cookie;
   if(cookie) {
-    const nameStartIdx = cookie.indexOf("name=")
-
-    if(nameStartIdx > -1) {
-      const name = cookie.substring(nameStartIdx + 5);
-      const nameEndIdx = name.indexOf(";");
-
-      if(nameEndIdx > -1) {
-        name = name.substring(0,nameEndIdx);
-        res.send(`Hello ${name}`);
-      } //문자열 끝에 ';'이 없으면
-      else {
+      const name = req.cookies.name;
+      //name이 존재한다면
+      if(name) {
         res.send(`Hello ${name}`);
       }
-    }
     else {
       res.send("name이 존재하지 않음")
     }
-    res.send(cookie);
   }
   else {
     res.send("쿠키가 없어요")
