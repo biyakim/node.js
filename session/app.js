@@ -19,7 +19,7 @@ app.use(
         secret : "hihi",
         resave : true,
         saveUninitialized : true
-    })
+    });
 );
 
 app.get("/",(req.res) => {
