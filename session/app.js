@@ -19,10 +19,10 @@ app.use(
         secret : "hihi",
         resave : true,
         saveUninitialized : true
-    });
+    })  
 );
 
-app.get("/",(req.res) => {
+app.get("/",(req,res) => {
         if(req.session.user) {
 
             console.log("이미 로그인된 상태")
